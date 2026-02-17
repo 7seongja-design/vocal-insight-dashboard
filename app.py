@@ -46,7 +46,7 @@ st.markdown("""
 
 # Sidebar
 with st.sidebar:
-    st.title("Data Insight Team")
+    st.title("By Jaemin Lee")
     st.image("https://img.icons8.com/fluency/96/microphone.png", width=80) 
     st.markdown("---")
     st.header("Upload Audio")
@@ -119,30 +119,32 @@ if uploaded_file is not None:
             
             # Dynamic Range Logic
             if abs(dynamic_range) > 15:
-                insight_text += f"- **Dynamic Representation**: Excellent. The dynamic range is **{abs(dynamic_range):.1f} dB**, showing a wide emotional spectrum from soft whispers to powerful belts.\n"
+                insight_text += f"<li><b>Dynamic Representation</b>: Excellent. The dynamic range is <b>{abs(dynamic_range):.1f} dB</b>, showing a wide emotional spectrum from soft whispers to powerful belts.</li>"
             else:
-                insight_text += f"- **Dynamic Representation**: Consistent. The dynamic range is **{abs(dynamic_range):.1f} dB**, suggesting a steady and controlled vocal performance.\n"
+                insight_text += f"<li><b>Dynamic Representation</b>: Consistent. The dynamic range is <b>{abs(dynamic_range):.1f} dB</b>, suggesting a steady and controlled vocal performance.</li>"
 
             # Brightness Logic
             if max_centroid > 3000:
-                insight_text += f"- **Timbre Analysis**: The spectral centroid peaks at **{int(max_centroid)} Hz** in climax sections, indicating a **very bright and open vocal texture** capable of cutting through a mix.\n"
+                insight_text += f"<li><b>Timbre Analysis</b>: The spectral centroid peaks at <b>{int(max_centroid)} Hz</b> in climax sections, indicating a <b>very bright and open vocal texture</b> capable of cutting through a mix.</li>"
             elif avg_centroid < 1500:
-                insight_text += f"- **Timbre Analysis**: The average centroid is **{int(avg_centroid)} Hz**, suggesting a **warm, grounded, and rich** vocal tone.\n"
+                insight_text += f"<li><b>Timbre Analysis</b>: The average centroid is <b>{int(avg_centroid)} Hz</b>, suggesting a <b>warm, grounded, and rich</b> vocal tone.</li>"
             else:
-                insight_text += f"- **Timbre Analysis**: Balanced brightness with an average centroid of **{int(avg_centroid)} Hz**.\n"
+                insight_text += f"<li><b>Timbre Analysis</b>: Balanced brightness with an average centroid of <b>{int(avg_centroid)} Hz</b>.</li>"
 
             # Stability Logic
             if avg_pitch_stability > 80:
-                insight_text += f"- **Pitch Control**: Outstanding stability (**{avg_pitch_stability:.1f}/100**). The chroma features show distinct and unwavering pitch centers.\n"
+                insight_text += f"<li><b>Pitch Control</b>: Outstanding stability (<b>{avg_pitch_stability:.1f}/100</b>). The chroma features show distinct and unwavering pitch centers.</li>"
             elif avg_pitch_stability < 60:
-                insight_text += f"- **Pitch Control**: Variable (**{avg_pitch_stability:.1f}/100**). Detected fluctuations suggesting a breathy style or frequent pitch glides/vibrato.\n"
+                insight_text += f"<li><b>Pitch Control</b>: Variable (<b>{avg_pitch_stability:.1f}/100</b>). Detected fluctuations suggesting a breathy style or frequent pitch glides/vibrato.</li>"
             else:
-                insight_text += f"- **Pitch Control**: Good stability (**{avg_pitch_stability:.1f}/100**), characteristic of a trained vocalist.\n"
+                insight_text += f"<li><b>Pitch Control</b>: Good stability (<b>{avg_pitch_stability:.1f}/100</b>), characteristic of a trained vocalist.</li>"
 
             st.markdown(f"""
             <div class="insight-box">
                 <h4>🎙️ Assistant Analysis</h4>
+                <ul>
                 {insight_text}
+                </ul>
             </div>
             """, unsafe_allow_html=True)
             
