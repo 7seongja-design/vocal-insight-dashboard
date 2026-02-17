@@ -193,6 +193,15 @@ if uploaded_file is not None:
         except Exception as e:
             st.error(f"Error processing audio file: {e}")
 
+    # Technical Guide Section
+    st.divider()
+    with st.expander("💡 분석 지표 알아보기 (Technical Guide)"):
+        st.markdown("""
+        - **Waveform (Amplitude vs Time)**: 소리의 크기 변화를 나타냅니다. 파형의 폭이 넓을수록 성량이 풍부하며, 곡의 감정선에 따른 다이내믹(강약 조절)을 확인할 수 있습니다.
+        - **Spectrogram (Frequency vs Time)**: 소리의 성질(음색)을 보여줍니다. 세로축의 주파수 에너지가 높고 밝을수록 '시원하고 쨍한' 고음(배음)이 잘 형성된 것입니다.
+        - **Pitch/Chroma (Note vs Time)**: 어떤 음정을 냈는지 분석합니다. 특정 음계 라인에 빨간색 블록이 흔들림 없이 길게 유지될수록 음정이 정확하고 안정적임을 의미합니다.
+        """)
+
 else:
     # Empty State
     st.container()
