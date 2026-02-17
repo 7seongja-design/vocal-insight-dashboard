@@ -119,25 +119,25 @@ if uploaded_file is not None:
             
             # Dynamic Range Logic
             if abs(dynamic_range) > 15:
-                insight_text += f"<li><b>Dynamic Representation</b>: Excellent. The dynamic range is <b>{abs(dynamic_range):.1f} dB</b>, showing a wide emotional spectrum from soft whispers to powerful belts.</li>"
+                insight_text += f"<li><b>다이내믹 표현력 (Dynamic Representation)</b>: 우수합니다. 다이내믹 레인지가 <b>{abs(dynamic_range):.1f} dB</b>로 측정되었으며, 부드러운 속삭임부터 파워풀한 성량까지 넓은 감정의 스펙트럼을 보여줍니다.</li>"
             else:
-                insight_text += f"<li><b>Dynamic Representation</b>: Consistent. The dynamic range is <b>{abs(dynamic_range):.1f} dB</b>, suggesting a steady and controlled vocal performance.</li>"
+                insight_text += f"<li><b>다이내믹 표현력 (Dynamic Representation)</b>: 일정합니다. 다이내믹 레인지가 <b>{abs(dynamic_range):.1f} dB</b>로 측정되었으며, 흔들림 없이 꾸준하고 안정적인 볼륨 컨트롤을 보여줍니다.</li>"
 
             # Brightness Logic
             if max_centroid > 3000:
-                insight_text += f"<li><b>Timbre Analysis</b>: The spectral centroid peaks at <b>{int(max_centroid)} Hz</b> in climax sections, indicating a <b>very bright and open vocal texture</b> capable of cutting through a mix.</li>"
+                insight_text += f"<li><b>음색 분석 (Timbre Analysis)</b>: 클라이맥스 구간에서 주파수 중심값(Spectral Centroid)이 <b>{int(max_centroid)} Hz</b>에 달합니다. 이는 <b>매우 밝고 시원한 음색</b>을 나타내며, 반주를 뚫고 나오는 명료한 보컬 질감을 증명합니다.</li>"
             elif avg_centroid < 1500:
-                insight_text += f"<li><b>Timbre Analysis</b>: The average centroid is <b>{int(avg_centroid)} Hz</b>, suggesting a <b>warm, grounded, and rich</b> vocal tone.</li>"
+                insight_text += f"<li><b>음색 분석 (Timbre Analysis)</b>: 따뜻합니다. 평균 주파수 중심값이 <b>{int(avg_centroid)} Hz</b>로, 중후하고 풍성한 저음역대의 매력이 돋보이는 음색입니다.</li>"
             else:
-                insight_text += f"<li><b>Timbre Analysis</b>: Balanced brightness with an average centroid of <b>{int(avg_centroid)} Hz</b>.</li>"
+                insight_text += f"<li><b>음색 분석 (Timbre Analysis)</b>: 균형 잡혀 있습니다. 평균 주파수 중심값이 <b>{int(avg_centroid)} Hz</b>로, 과하게 밝거나 어둡지 않은 편안하고 자연스러운 톤을 가지고 있습니다.</li>"
 
             # Stability Logic
             if avg_pitch_stability > 80:
-                insight_text += f"<li><b>Pitch Control</b>: Outstanding stability (<b>{avg_pitch_stability:.1f}/100</b>). The chroma features show distinct and unwavering pitch centers.</li>"
+                insight_text += f"<li><b>음정 제어력 (Pitch Control)</b>: 매우 뛰어난 안정성(<b>{avg_pitch_stability:.1f}/100</b>)을 보여줍니다. 크로마 분석 결과, 음정이 흔들림 없이 목표 피치에 정확하게 고정되어 있습니다.</li>"
             elif avg_pitch_stability < 60:
-                insight_text += f"<li><b>Pitch Control</b>: Variable (<b>{avg_pitch_stability:.1f}/100</b>). Detected fluctuations suggesting a breathy style or frequent pitch glides/vibrato.</li>"
+                insight_text += f"<li><b>음정 제어력 (Pitch Control)</b>: 다소 불안정(<b>{avg_pitch_stability:.1f}/100</b>)합니다. 호흡이 불안정하거나 바이브레이션의 폭이 넓어 피치가 흔들리는 구간이 감지됩니다.</li>"
             else:
-                insight_text += f"<li><b>Pitch Control</b>: Good stability (<b>{avg_pitch_stability:.1f}/100</b>), characteristic of a trained vocalist.</li>"
+                insight_text += f"<li><b>음정 제어력 (Pitch Control)</b>: 준수합니다(<b>{avg_pitch_stability:.1f}/100</b>). 훈련된 보컬리스트의 특징인 안정적인 피치 유지가 관찰됩니다.</li>"
 
             st.markdown(f"""
             <div class="insight-box">
